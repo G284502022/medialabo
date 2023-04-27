@@ -1,8 +1,23 @@
 body {
     color: white;
     background-color: black;
+    background-image: url("hanabi.png");
 }
 h1.webkontentssakusei{
     color: red;
+    text-shadow: 10px 10px 3px white;
     /*font-family:HGS創英角ﾎﾟｯﾌﾟ体;*/
+}
+h2 {
+    font-family: cursive;
+    color: White;
+    text-shadow: 5px 5px 1px rgb(144, 187, 144);
+    background: linear-gradient(blue, red);
+}
+
+h3 {
+    font-family: cursive;
+    color: White;
+    text-shadow: 5px 5px 1px rgb(144, 187, 144);
+    background: linear-gradient(blue, red);
 }
