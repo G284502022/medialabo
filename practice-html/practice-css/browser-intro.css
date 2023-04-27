@@ -3,25 +3,59 @@ p {
 }
 
 p.info {
-	font-size: 10pt;
+	font-size: small;
+	background-color: #dfdfdf;
+}
+
+title {
+	color: white;
 }
 
 h1 {
-	background-color: #7f7fcf;
+	text-shadow: 1px 1px 10px navy;
+	color: white;
 }
 
 h2 {
-	border: solid 1px black;
 	margin: 5px;
 }
 
 div#zentai {
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 10px 10px 10px 10px;
 	flex-direction: row;
 	width: 1024px;
 }
 
 div#zentai > div {
-	margin-left: 5px;
+	margin: 10px 10px 10px 10px;
 	background-color: #ffefaf;
+}
+
+img{
+	float: right;
+}
+h2.Google {
+	font-family: cursive;
+	color: #3f3faf;
+	background: linear-gradient(white, #ffefaf);
+}
+
+h2.Safari {
+	font-family: cursive;
+	color: #3f3faf;
+	background: linear-gradient(white, #ffefaf);
+}
+
+h2.Edge {
+	font-family: cursive;
+	color: #3f3faf;
+	background: linear-gradient(white, #ffefaf);
+}
+
+h2.Firefox {
+	font-family: cursive;
+	color: #3f3faf;
+	background: linear-gradient(white, #ffefaf);
 }
