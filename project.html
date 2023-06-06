@@ -3,48 +3,26 @@
     <head>
         <meta charset="utf-8">
         <title>演習1-3</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
         <link rel="stylesheet" href="project.css">
         <script src="project.js" defer></script>
-        <script src="weather.js" defer></script>
     </head>
-    <body>
-        <input type="text" name="kensakuba-" id="kensakuba-" size="5">
-        <button id="kaitou">回答</button>
-        <h2 id="kensakukekka"></h2>
-        <p id="zyouhou0"></p>
-        <p id="zyouhou1"></p>
-        <p id="zyouhou2"></p>
-        <p id="zyouhou3"></p>
-        <!--<h2>エジプト の検索結果</h2>
-        <h3>カイロ</h3>
-        <ul>
-            <li>天気：晴れ</li>
-            <li>最高気温:47度</li>
-            <li>最低気温:-3度</li>
-            <li>湿度:89%</li>
-        </ul>
-        <h4>他の候補</h4>
-        <h4>東京</h4>
-        <ul>
-            <li>天気：雨</li>
-            <li>最高気温:6000度</li>
-            <li>最低気温:-10度</li>
-            <li>湿度:29%</li>
-        </ul>
-        <h4>ニューヨーク</h4>
-        <ul>
-            <li>天気：曇り</li>
-            <li>最高気温:230°F</li>
-            <li>最低気温:133°F</li>
-            <li>湿度:42%</li>
-        </ul>
-        <h4>パリ</h4>
-        <ul>
-            <li>天気：晴れ</li>
-            <li>最高気温:38度</li>
-            <li>最低気温:21度
-            </li>
-            <li>湿度:22%</li>
-        </ul>!-->
+    <bod>
+        <button id="henkan">℃/°F変換</button>
+        <p id = "code_kensaku">コード検索</p>
+        <input type="text" name="kensakuba-" id="kensakuba-" size="5" maxlength="7">
+        <button id="kensaku">検索</button>
+
+        <input type="text" name="kensakuba-2" id="kensakuba-2" size="5">
+        <button id="kensaku">検索</button>
+
+        <h2 id="data_name"></h2>
+        <p id="data_weather"></p>
+        <p id="temp"></p>
+        <p id="temp_max"></p>
+        <p id="temp_min"></p>
+        <p id="humidity"></p>
+        <!--地図!-->
+        <!--<button id="america"><img src="JWST_spacecraft_model_2.png"></button>!-->
     </body>
 </html>

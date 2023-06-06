@@ -2,3 +2,31 @@ body {
     color: white;
     background-color: black;
 }
+p#code_kensaku {
+    display: inline-block;
+}
+button#america{
+    position: relative;
+    height: 50px;
+    width: 90px;
+    outline: solid;
+    cursor: pointer;
+    background:none;
+    border:0;
+}
+button#america:hover img{
+    display: none;
+}
+button#america:hover{
+    background-image: ("hanako.png");
+    background-repeat: no-repeat;
+}
+
+
+  img#america{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
