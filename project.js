@@ -1,12 +1,77 @@
 let kensaku = document.querySelector('button#kensaku');
 let henkan = document.querySelector('button#henkan');
+let keywords = document.querySelector('button#keyword_kensaku');
+
 kensaku.addEventListener('click', sendRequest);
 henkan.addEventListener('click', changeTemperature);
+keywords.addEventListener('click', keyword);
 
 //セルシウス度
 let temperature = '℃';
 //華氏にするためのフラグ
 let flag = new Boolean(false);
+
+function keyword() {
+    let e = document.querySelector('input[name="kensakuba-2"]');
+    let Nyuuryokusitanaiyoukeyword = e.value;
+    let suuti = 0;
+
+    if("カイロ"===Nyuuryokusitanaiyoukeyword){
+        suuti = 360630;
+    }
+
+    if("モスクワ"===Nyuuryokusitanaiyoukeyword){
+        suuti = 524901;
+    }
+
+    if("ヨハネスブルク"===Nyuuryokusitanaiyoukeyword){
+        suuti = 993800;
+    }
+
+    if("北京"===Nyuuryokusitanaiyoukeyword){
+        suuti = 1816670;
+    }
+
+    if("東京"===Nyuuryokusitanaiyoukeyword){
+        suuti = 1850147;
+    }
+
+    if("シンガポール"===Nyuuryokusitanaiyoukeyword){
+        suuti = 1880252;
+    }
+
+    if("シドニー"===Nyuuryokusitanaiyoukeyword){
+        suuti = 2147714;
+    }
+
+    if("ロンドン"===Nyuuryokusitanaiyoukeyword){
+        suuti = 2643743;
+    }
+
+    if("パリ"===Nyuuryokusitanaiyoukeyword){
+        suuti = 2968815;
+    }
+
+    if("リオデジャネイロ"===Nyuuryokusitanaiyoukeyword){
+        suuti = 3451189;
+    }
+
+    if("ニューヨーク"===Nyuuryokusitanaiyoukeyword){
+        suuti = 5128581;
+    }
+
+    if("ロサンゼルス"===Nyuuryokusitanaiyoukeyword){
+        suuti = 5368361;
+    }
+
+    let url = 'https://www.nishita-lab.org/web-contents/jsons/openweather/'+suuti+'.json';
+
+    // 通信開始
+    axios.get(url)
+        .then(showResult)   // 通信成功
+        .catch(showError)   // 通信失敗
+        .then(finish);      // 通信の最後の処理
+}
 
 function sendRequest() {
 
