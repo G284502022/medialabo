@@ -1,15 +1,25 @@
 let kensaku = document.querySelector('button#kensaku');
 let henkan = document.querySelector('button#henkan');
+let henkan2 = document.querySelector('button#henkan2');
 let keywords = document.querySelector('button#keyword_kensaku');
+
+//地図
+let america = document.querySelector('button#america');
+let england = document.querySelector('button#england');
 
 kensaku.addEventListener('click', sendRequest);
 henkan.addEventListener('click', changeTemperature);
+henkan2.addEventListener('click', changeTemperature2);
 keywords.addEventListener('click', keyword);
 
+//地図
+america.addEventListener('click', usa);
+england.addEventListener('click', eng);
 //セルシウス度
 let temperature = '℃';
 //華氏にするためのフラグ
 let flag = new Boolean(false);
+let flag1 = new Boolean(false);
 
 function keyword() {
     let e = document.querySelector('input[name="kensakuba-2"]');
@@ -73,18 +83,48 @@ function keyword() {
         .then(finish);      // 通信の最後の処理
 }
 
+let seijouki = false;//地図に使うやつ
+let unionflag = false;
+function usa(){
+    seijouki = true;
+    sendRequest();
+}
+function eng(){
+    unionflag = true;
+    sendRequest();
+}
+let Nyuuryokusitanaiyou;
+let e;
 function sendRequest() {
+    let random = Math.floor(Math.random() * 2);
+    if(seijouki){
+        if(random == 0){
+            Nyuuryokusitanaiyou = 5128581;
+        }else{
+            Nyuuryokusitanaiyou = 5368361;
+        }
+        seijouki = false;
+    }else{
+        e = document.querySelector('input[name="kensakuba-"]');
+        Nyuuryokusitanaiyou = Number(e.value);
+    }
+    if(unionflag){
+        Nyuuryokusitanaiyou = 2643743;
+        unionflag = false;
+    }else{
+        e = document.querySelector('input[name="kensakuba-"]');
+        Nyuuryokusitanaiyou = Number(e.value);
+    }
 
-    let e = document.querySelector('input[name="kensakuba-"]');
-    let Nyuuryokusitanaiyou = Number(e.value);
+    
 
-    let url = 'https://www.nishita-lab.org/web-contents/jsons/openweather/'+Nyuuryokusitanaiyou+'.json';
+        let url = 'https://www.nishita-lab.org/web-contents/jsons/openweather/'+Nyuuryokusitanaiyou+'.json';
 
-    // 通信開始
-    axios.get(url)
-        .then(showResult)   // 通信成功
-        .catch(showError)   // 通信失敗
-        .then(finish);      // 通信の最後の処理
+        // 通信開始
+        axios.get(url)
+            .then(showResult)   // 通信成功
+            .catch(showError)   // 通信失敗
+            .then(finish);      // 通信の最後の処理
 }
 
 let a = 0;
@@ -94,15 +134,33 @@ function changeTemperature() {
     if(a === 0){
         temperature = '°F';
         flag = true;
-        sendRequest();
+        keyword();
         a++;
     }else if(a === 1){
         temperature = '℃';
         flag = false;
-        sendRequest();
+        keyword();
         a--;
     }
 }
+
+let b = 0;
+
+function changeTemperature2() {
+
+    if(b === 0){
+        temperature = '°F';
+        flag1 = true;
+        sendRequest();
+        b++;
+    }else if(b === 1){
+        temperature = '℃';
+        flag1 = false;
+        sendRequest();
+        b--;
+    }
+}
+
 // 通信が成功した時の処理
 function showResult(resp) {
     // サーバから送られてきたデータを出力
@@ -119,6 +177,16 @@ function showResult(resp) {
         data.main.temp_max = data.main.temp_max;
         data.main.temp_min = data.main.temp_min;
     }else if(flag === true){
+        data.main.temp = (data.main.temp * 9 /5) + 32;
+        data.main.temp_max = (data.main.temp_max * 9 /5) + 32;
+        data.main.temp_min = (data.main.temp_min * 9 /5) + 32;
+    }
+
+    if(flag1 === false){
+        data.main.temp = data.main.temp;
+        data.main.temp_max = data.main.temp_max;
+        data.main.temp_min = data.main.temp_min;
+    }else if(flag1 === true){
         data.main.temp = (data.main.temp * 9 /5) + 32;
         data.main.temp_max = (data.main.temp_max * 9 /5) + 32;
         data.main.temp_min = (data.main.temp_min * 9 /5) + 32;
